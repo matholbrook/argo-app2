@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: laughing-lion
+  namespace: app-foo-prd
+  labels:
+    app: laughing-lion
+    env: prd
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  selector:
+    app: laughing-lion
+    env: prd

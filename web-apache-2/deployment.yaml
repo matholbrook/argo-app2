@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: laughing-lion
+  namespace: app-foo-prd
+  labels:
+    app: laughing-lion
+    env: prd
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: laughing-lion
+      env: prd
+  template:
+    metadata:
+      labels:
+        app: laughing-lion
+        env: prd
+    spec:
+      containers:
+      - name: apache1b
+        image: httpd:latest
+        ports:
+        - containerPort: 80
