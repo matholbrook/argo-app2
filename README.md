@@ -56,3 +56,21 @@ $ argocd app get argocd/argo-app2 -o json | jq -r '.spec.syncPolicy'
 }
 ```
 Sync Policy:        Automated (Prune)
+
+
+## Sync Retry Policies
+
+```bash
+$ argocd app set argocd/argo-app2 --sync-retry-limit 5
+$ argocd app get argocd/argo-app2 -o json | jq -r '.spec.syncPolicy.retry'
+{
+  "limit": 5,
+  "backoff": {
+    "duration": "5s",
+    "factor": 2,
+    "maxDuration": "3m0s"
+  }
+}
+```
+
+$ argocd app set argocd/argo-app2 --sync-retry-limit 5 --sync-retry-backoff-duration 1m
