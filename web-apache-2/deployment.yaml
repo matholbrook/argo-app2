@@ -23,3 +23,10 @@ spec:
         image: httpd:2.4.66
         ports:
         - containerPort: 80
+        resources:
+      requests:
+        memory: "32Mi"
+        cpu: "125m"
+      limits:
+        memory: "64Mi"
+        cpu: "250m"
